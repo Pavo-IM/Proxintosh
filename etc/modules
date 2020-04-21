@@ -1,7 +1,4 @@
-# /etc/modules: kernel modules to load at boot time.
-#
-# This file contains the names of kernel modules that should be loaded
-# at boot time, one per line. Lines beginning with "#" are ignored.
+# This file contains the names of kernel modules that we want to load during booting into Proxmox.
 vfio
 vfio_iommu_type1
 vfio_pci
