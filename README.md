@@ -2,7 +2,7 @@
 MacOS Catalina `10.15.5 beta 3` on Proxmox VE 6.1 on AMD 3950X system with on-board USB Controllers, Radeon VII, 2x NVMe drives passed through to MacOS.
 
 > [!IMPORTANT]  
-> This README is a work in progress and is not finalized. Please do not use these instructions until this warning has been removed.
+This README is a work in progress and is not finalized. Please do not use these instructions until this warning has been removed.
 
 # System Specs
 [CPU] `AMD Ryzen 9 3950X 3.5 GHz 16-Core Processor`  
