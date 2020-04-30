@@ -103,20 +103,6 @@
 				<key>PlistPath</key>
 				<string>Contents/Info.plist</string>
 			</dict>
-			<dict>
-				<key>BundlePath</key>
-				<string>WhateverGreen.kext</string>
-				<key>Enabled</key>
-				<true/>
-				<key>ExecutablePath</key>
-				<string>Contents/MacOS/WhateverGreen</string>
-				<key>MaxKernel</key>
-				<string></string>
-				<key>MinKernel</key>
-				<string></string>
-				<key>PlistPath</key>
-				<string>Contents/Info.plist</string>
-			</dict>
 		</array>
 		<key>Block</key>
 		<array/>
@@ -320,7 +306,7 @@
 				Rg==
 				</data>
 				<key>boot-args</key>
-				<string>shikigva=80 keepsyms=1 debug=0x100 -v</string>
+				<string>keepsyms=1 debug=0x100 -v</string>
 				<key>csr-active-config</key>
 				<data>
 				AAAAAA==
