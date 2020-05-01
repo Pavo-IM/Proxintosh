@@ -1,11 +1,10 @@
 # Proxintosh
 MacOS Catalina `10.15.5 beta 3` on Proxmox VE 6.1 on AMD 3950X system with on-board USB Controllers, Radeon VII, 2x NVMe drives passed through to MacOS.
 
-> [<span style="color:red">**!IMPORTANT**]  
-This README is a work in progress and is not finalized. Please do not use these instructions until this warning has been removed.</span>
-
+<span style="color:red">**IMPORTANT**  
+This README is a work in progress and is not finalized. Please do not use these instructions until this warning has been removed.</span>  
 # System Specs
-[CPU] `AMD Ryzen 9 3950X 3.5 GHz 16-Core Processor`  
+[CPU] <span style="color:orange">AMD Ryzen 9 3950X 3.5 GHz 16-Core Processor<span style="color:red">  
 [CPU Cooler] `Thermaltake Floe Riing RGB 360 TT Premium Edition 42.34 CFM Liquid CPU Cooler`  
 [Motherboard] `MSI MPG X570 GAMING EDGE WIFI ATX AM4 Motherboard`  
 [Memory] `Corsair Vengeance RGB Pro 64 GB (4 x 16 GB) DDR4-3200 Memory`  
