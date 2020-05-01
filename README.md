@@ -1,10 +1,10 @@
-# Proxintosh
+# 🖥 Proxintosh
 MacOS Catalina `10.15.5 beta 3` on Proxmox VE 6.1 on AMD 3950X system with on-board USB Controllers, Radeon VII, 2x NVMe drives passed through to MacOS.
 
-**IMPORTANT**  
+### 🚧 Important
 This README is a work in progress and is not finalized. Please do not use these instructions until this warning has been removed.  
 
-# System Specs
+## System Specs
 [**CPU**] AMD Ryzen 9 3950X 3.5 GHz 16-Core Processor  
 [**CPU Cooler**] Thermaltake Floe Riing RGB 360 TT Premium Edition 42.34 CFM Liquid CPU Cooler  
 [**Motherboard**] MSI MPG X570 GAMING EDGE WIFI ATX AM4 Motherboard  
@@ -19,27 +19,32 @@ This README is a work in progress and is not finalized. Please do not use these 
 [**Monitor**] Dell D2719HGF 27.0" 1920x1080 144 Hz Monitor  
 
 **Disclaimer**  
-Results may vary on your system. The results you see in this repo are based of above system specs. It mayb be different with different system specs.
+Results may vary on your system. The results you see in this repo are based of above system specs. It may be different with different system specs.
 
-# Instructions
-- Download [Proxmox VE 6.1 ISO](https://www.proxmox.com/en/downloads?task=callelement&format=raw&item_id=499&element=f85c494b-2b32-4109-b8c1-083cca2b7db6&method=download&args[0]=2ceb9af3734861c9c28a59daa85d86e3) and make a bootable USB drive.
-- Install Proxmox 6.1 on a separate small drive.
-- Boot the UEFI version of Proxmox VE from the drive you just installed it on. There will be the UEFI version and the normal proxmox version, make sure you set your first bootable drive in your BIOS settings to be the UEFI version of Proxmox.
-- Once you have booted and see the login screen, login as `root` and use the password you created during install.
-### Do the following commands in order to download this git repo and copy the pre-setup files needed:
-    apt-get update
-    apt-get install git vim -y
-    git clone https://github.com/Pavo-IM/Proxintosh
-    cp Proxintosh/etc/modprobe.d/*.conf /etc/modprobe.d/
-    cp Proxintosh/etc/modules /etc/modules
-    cp Proxintosh/etc/default/grub /etc/default/
-    cd Proxintosh/patches
-    dpkg -i *.deb
+## Instructions
+1. Download [Proxmox VE 6.1 ISO](https://www.proxmox.com/en/downloads?task=callelement&format=raw&item_id=499&element=f85c494b-2b32-4109-b8c1-083cca2b7db6&method=download&args[0]=2ceb9af3734861c9c28a59daa85d86e3) and make a bootable USB drive.
+1. Install Proxmox 6.1 on a separate small drive.
+1. Boot the UEFI version of Proxmox VE from the drive you just installed it on. There will be the UEFI version and the normal proxmox version, make sure you set your first bootable drive in your BIOS settings to be the UEFI version of Proxmox.
+1. Once you have booted and see the login screen, login as `root` and use the password you created during install.
+1. Do the following commands in order to download this git repo and copy the pre-setup files needed:
 
-### Now we need to start looking for information to edit the [vfio.conf](etc/modprobe.d/vfio.conf) to match your system and IOMMU groups.
-    lspci  
+```
+apt-get update
+apt-get install git vim -y
+git clone https://github.com/Pavo-IM/Proxintosh
+cp Proxintosh/etc/modprobe.d/*.conf /etc/modprobe.d/
+cp Proxintosh/etc/modules /etc/modules
+cp Proxintosh/etc/default/grub /etc/default/
+cd Proxintosh/patches
+dpkg -i *.deb
+```
+
+Now we need to start looking for information to [edit the `vfio.conf`](etc/modprobe.d/vfio.conf) to match your system and IOMMU groups.
+```
+lspci
+```
 You should see an output like below:
-```s
+```
 00:00.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Starship/Matisse Root Complex
 00:14.0 SMBus: Advanced Micro Devices, Inc. [AMD] FCH SMBus Controller (rev 61)
 00:14.3 ISA bridge: Advanced Micro Devices, Inc. [AMD] FCH LPC Bridge (rev 51)
@@ -61,10 +66,16 @@ You should see an output like below:
 2f:00.1 Audio device: Advanced Micro Devices, Inc. [AMD/ATI] Vega 20 HDMI Audio [Radeon VII]
 31:00.3 USB controller: Advanced Micro Devices, Inc. [AMD] Matisse USB 3.0 Host Controller
 31:00.4 Audio device: Advanced Micro Devices, Inc. [AMD] Starship/Matisse HD Audio Controller
+...
 ```
-This is just an example I have cut out some of the output to save the length of this README.  
-Highlight and copy what devices you want to passthrough from the host OS to the guest OS and save that in a textfile for later use. Example I amd passing through my `31:00.3 USB controller: Advanced Micro Devices, Inc. [AMD] Matisse USB 3.0 Host Controller`, `2f:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Vega 20 [Radeon VII] (rev c1)` and a few other devices, but this should give you a general idea of how to go about passing through all the devices you have selected.  
+This is just an example I have cut out some of the output to save the length of this README. Highlight and copy what devices you want to passthrough from the host OS to the guest OS and save that in a textfile for later use.
 
+For example I am passing through my:
+```
+31:00.3 USB controller: Advanced Micro Devices, Inc. [AMD] Matisse USB 3.0 Host Controller
+2f:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Vega 20 [Radeon VII] (rev c1)
+```
+...and a few other devices, but this should give you a general idea of how to go about passing through all the devices you have selected.  
 
-# Credits
+### Credits
 Thanks to [Fabiosun](https://github.com/fabiosun) for his guidance on the starting of my adventures into the virtualization of MacOS using Proxmox VE using the guide he made at [macOS86.it](https://www.macos86.it/topic/2509-guide-trx40-osx-bare-metal-proxmox-setup61-3/)
