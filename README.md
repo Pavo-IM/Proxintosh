@@ -35,3 +35,6 @@ Results may vary on your system. The results you see in this repo are based of a
     cp Proxintosh/etc/default/grub /etc/default/
     cd Proxintosh/patches
     dpkg -i *.deb
+
+# Credits
+Thanks to [Fabiosun](https://github.com/fabiosun) for his guidance on the starting of my adventures into the virtualization of MacOS using Proxmox VE using the guide he made at [macOS86.it](https://www.macos86.it/topic/2509-guide-trx40-osx-bare-metal-proxmox-setup61-3/)
