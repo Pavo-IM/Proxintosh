@@ -35,11 +35,12 @@ git clone https://github.com/Pavo-IM/Proxintosh
 cp Proxintosh/etc/modprobe.d/*.conf /etc/modprobe.d/
 cp Proxintosh/etc/modules /etc/modules
 cp Proxintosh/etc/default/grub /etc/default/
+cp Proxintosh/etc/pve/qemu-server/vm.conf /etc/pve/qemu-server/100.conf
 cd Proxintosh/patches
 dpkg -i *.deb
 ```
 
-Now we need to start looking for information to [edit the `vfio.conf`](etc/modprobe.d/vfio.conf) to match your system and IOMMU groups.
+Now we need to start looking for information to edit [vfio.conf](etc/modprobe.d/vfio.conf) to match your system and IOMMU groups.
 ```
 lspci
 ```
@@ -76,6 +77,31 @@ For example I am passing through my:
 2f:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Vega 20 [Radeon VII] (rev c1)
 ```
 ...and a few other devices, but this should give you a general idea of how to go about passing through all the devices you have selected.  
+
+Next you need to get the device-id of those devices by using the `lspci -n -s xx:xx.x` command. The `xx:xx.x` is from the device address that gets assigned by the kernel. From the example above the USB Controller is `31:00.0`, so the command would be `lspci -n -s 31:00.0`. Example output of that command looks like...
+
+```
+31:00.3 0c03: 1022:149c
+```
+Make note of each device-id that you are wanting to passthrough to the guest OS. Once you have all the device-ids you want to passthrough to the guest OS, you use your favorite editor application, Vim is mine and edit the [vfio.conf](etc/modprobe.d/vfio.conf) located in `/etc/modprobe.d/vfio.conf`.
+
+After you have edited the [vfio.conf](etc/modprobe.d/vfio.conf) file, you need to do the following commands...
+
+```
+update-initramfs -u -k all
+update-grub
+pve-efiboot-tool refresh
+reboot
+```
+After the system reboots and you are back into the system, you need to open your web browers and go to the IP address that you setup during the install process of Proxmox VE. Login and on the left handside expand the `pve` tree. 
+
+Locate the 100 VM that is already created for you, by copying the [vm.conf](etc/pve/qemu-server/vm.conf) earlier.
+
+Delete the `EFI Disk` and recreate a new one, this is needed because your fresh setup didn't have a local disk made for the EFI disk.
+
+Now click on each `hostpci` device and change them to the devices your have selected earlier.
+
+Now you should be able to boot the VM without issues.
 
 ### Credits
 Thanks to [Fabiosun](https://github.com/fabiosun) for his guidance on the starting of my adventures into the virtualization of MacOS using Proxmox VE using the guide he made at [macOS86.it](https://www.macos86.it/topic/2509-guide-trx40-osx-bare-metal-proxmox-setup61-3/)
