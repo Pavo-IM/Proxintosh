@@ -119,16 +119,16 @@
 		<array>
 			<dict>
 				<key>Base</key>
-				<string>_cpu_topology_sort</string>
+				<string></string>
 				<key>Comment</key>
-				<string>algrey - cpu_topology_sort -disable _x86_validate_topology</string>
+				<string>algrey - cpuid_set_generic_info - disable check to allow leaf7</string>
 				<key>Count</key>
 				<integer>1</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
 				<data>
-				6AAA//8=
+				ADoPgg==
 				</data>
 				<key>Identifier</key>
 				<string>kernel</string>
@@ -136,7 +136,6 @@
 				<integer>0</integer>
 				<key>Mask</key>
 				<data>
-				/wAA//8=
 				</data>
 				<key>MaxKernel</key>
 				<string>19.99.99</string>
@@ -144,7 +143,7 @@
 				<string>17.0.0</string>
 				<key>Replace</key>
 				<data>
-				Dx9EAAA=
+				AAAPgg==
 				</data>
 				<key>ReplaceMask</key>
 				<data>
