@@ -1,9 +1,6 @@
 # 🖥 Proxintosh
 MacOS Catalina `10.15.5 beta 3` on Proxmox VE 6.1 on AMD 3950X system with on-board USB Controllers, Radeon VII, 2x NVMe drives passed through to MacOS.
 
-### 🚧 Important
-This README is a work in progress and is not finalized. Please do not use these instructions until this warning has been removed.  
-
 ## System Specs
 [**CPU**] AMD Ryzen 9 3950X 3.5 GHz 16-Core Processor  
 [**CPU Cooler**] Thermaltake Floe Riing RGB 360 TT Premium Edition 42.34 CFM Liquid CPU Cooler  
@@ -18,8 +15,22 @@ This README is a work in progress and is not finalized. Please do not use these 
 [**Monitor**] Dell D2719HGF 27.0" 1920x1080 144 Hz Monitor  
 [**Monitor**] Dell D2719HGF 27.0" 1920x1080 144 Hz Monitor  
 
+## What Works....
+- NVMe PCIe passthrough
+- Single GPU passthrough
+- Host CPU passthrough with minimum MacOS kernel patching
+- PCIe USB card passthrough
+- Major increase in graphic performance vs bare metal install
+- Wifi/BT PCIe passthrough
+- PCIe Ethernet NIC card passthrough
+
+## What does not work (Works with patched kernel in [patches](patches) folder)
+- On-board Realtek Audio passthrough (Works with the patched kernel)
+- On-board USB Controllers passthrough (Works with the patched kernel)
+
 **Disclaimer**  
-Results may vary on your system. The results you see in this repo are based of above system specs. It may be different with different system specs.
+Results may vary on your system. The results you see in this repo are based of above system specs. It may be different with different system specs.  
+The patches in this repo are only needed if you are trying to passthrough the on-board USB Controller or on-board Realtek audio device.
 
 ## Instructions
 1. Download [Proxmox VE 6.1 ISO](https://www.proxmox.com/en/downloads?task=callelement&format=raw&item_id=499&element=f85c494b-2b32-4109-b8c1-083cca2b7db6&method=download&args[0]=2ceb9af3734861c9c28a59daa85d86e3) and make a bootable USB drive.
