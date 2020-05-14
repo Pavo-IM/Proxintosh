@@ -23,8 +23,6 @@ MacOS Catalina `10.15.5 beta 3` on Proxmox VE 6.1 on AMD 3950X system with on-bo
 - Major increase in graphic performance vs bare metal install
 - Wifi/BT PCIe passthrough
 - PCIe Ethernet NIC card passthrough
-
-## What does not work (Works with patched kernel in [patches](patches) folder)
 - On-board Realtek Audio passthrough (Works with the patched kernel)
 - On-board USB Controllers passthrough (Works with the patched kernel)
 
