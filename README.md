@@ -110,9 +110,18 @@ Locate the 100 VM that is already created for you, by copying the [vm.conf](etc/
 
 Delete the `EFI Disk` and recreate a new one, this is needed because your fresh setup didn't have a local disk made for the EFI disk.
 
-Now click on each `hostpci` device and change them to the devices your have selected earlier.
+Now click on each `hostpci` device in the web interface under hardware and change them to the devices your have selected earlier from the ```lspci``` command
+
+Last step before booting is you will need to create a Opencore USB Bootable Drive
+Create a standard EFI folder and copy the ```config.plist``` from this repo
+
+The essential kexts should be included in your EFI as follows : ```Lilu.kext , VirtualSMC.kext and AppleALC.kext (for Audio Passtrough make``` alcid=11 will need to be added to bootagrs for this to work.
+
+once you have created the efi insert into any of the passed through USB ports
 
 Now you should be able to boot the VM without issues.
+Proxmox's UEFI BIOS will automatcally boot from the USB drive and you should see your macOS partition.
+
 
 ### Credits
 Thanks to [Fabiosun](https://github.com/fabiosun) for his guidance on the starting of my adventures into the virtualization of MacOS using Proxmox VE using the guide he made at [macOS86.it](https://www.macos86.it/topic/2509-guide-trx40-osx-bare-metal-proxmox-setup61-3/)
