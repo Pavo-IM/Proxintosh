@@ -113,7 +113,7 @@ Now click on each `hostpci` device in the web interface under hardware and chang
 Last step before booting is you will need to create a Opencore USB Bootable Drive
 Create a standard EFI folder and copy the ```config.plist``` from this repo
 
-The essential kexts should be included in your EFI as follows : ```Lilu.kext , VirtualSMC.kext and AppleALC.kext (for Audio Passtrough make``` alcid=11 will need to be added to bootagrs for this to work.
+The essential kexts should be included in your EFI as follows : ```Lilu.kext , VirtualSMC.kext and AppleALC.kext (for Audio Passtrough make``` alcid=11 will need to be added to boot-args for this to work.
 
 once you have created the efi insert into any of the passed through USB ports
 
