@@ -35,10 +35,17 @@ The patches in this repo are only needed if you are trying to passthrough the on
 1. Install Proxmox 6.2 on a separate small drive.
 1. Boot the UEFI version of Proxmox VE from the drive you just installed it on. There will be the UEFI version and the normal proxmox version, make sure you set your first bootable drive in your BIOS settings to be the UEFI version of Proxmox.
 1. Once you have booted and see the login screen, login as `root` and use the password you created during install.
-1. Do the following commands in order to download this git repo and copy the pre-setup files needed:
-
+1. Copy and paste the next code snippet as it entirely.
 ```
-echo "deb http://download.proxmox.com/debian/pve buster pve-no-subscription" > /etc/apt/sources.list
+cat << EOF >> /etc/apt/sources.list
+deb http://download.proxmox.com/debian/pve buster pve-no-subscription
+deb http://ftp.debian.org/debian buster main contrib
+deb http://ftp.debian.org/debian buster-updates main contrib
+deb http://security.debian.org/debian-security buster/updates main contrib
+EOF
+```
+1. Do the following commands in order to download this git repo and copy the pre-setup files needed:
+```
 rm -rf /etc/apt/sources.list.d/pve-enterprise.list
 apt update
 apt install git vim -y
