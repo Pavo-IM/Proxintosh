@@ -38,8 +38,10 @@ The patches in this repo are only needed if you are trying to passthrough the on
 1. Do the following commands in order to download this git repo and copy the pre-setup files needed:
 
 ```
-apt-get update
-apt-get install git vim -y
+echo "deb http://download.proxmox.com/debian/pve buster pve-no-subscription" > /etc/apt/sources.list
+rm -rf /etc/apt/sources.list.d/pve-enterprise.list
+apt update
+apt install git vim -y
 git clone https://github.com/Pavo-IM/Proxintosh
 cp Proxintosh/etc/modprobe.d/*.conf /etc/modprobe.d/
 cp Proxintosh/etc/modules /etc/modules
