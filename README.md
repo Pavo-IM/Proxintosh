@@ -61,7 +61,7 @@ dpkg -i *.deb
 
 ```
 It is important to know any device you want to passthrough to the VM needs to be in its own individual IOMMU group, if it is not then you have to passthrough everything in that group.  
-This all depends on the AGRESA version you have in your firmware (BIOS).  
+This all depends on the AGESA version you have in your firmware (BIOS).  
 There is known issues with the AsRock B450 Steel Legend and its latest BIOS which only has AGESA 1.0.0.4 Patch B.
 ```
 Now is a good time to see what your IOMMU groups looks like.  
