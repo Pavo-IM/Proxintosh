@@ -56,8 +56,16 @@ cp Proxintosh/etc/default/grub /etc/default/
 cp Proxintosh/etc/pve/qemu-server/vm.conf /etc/pve/qemu-server/100.conf
 cd Proxintosh/patches
 dpkg -i *.deb
-```
+```  
+**Important Info**  
 
+```
+It is important to know any device you want to passthrough to the VM needs to be in its own individual IOMMU group, if it is not then you have to passthrough everything in that group.  
+This all depends on the AGRESA version you have in your firmware (BIOS).  
+There is known issues with the AsRock B450 Steel Legend and its latest BIOS which only has AGRESA 1.0.0.4 Patch B.
+```
+Now is a good time to see what your IOMMU groups looks like.  
+Use the provided [checkIOMMUGroups.sh](scripts/checkIOMMUGroups.sh) script to see what devices are in individual groups.  
 Now we need to start looking for information to edit [vfio.conf](etc/modprobe.d/vfio.conf) to match your system and IOMMU groups.
 ```
 lspci
