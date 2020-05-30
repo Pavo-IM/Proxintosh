@@ -68,7 +68,7 @@ Now is a good time to see what your IOMMU groups looks like.
 Use the provided [checkIOMMUGroups.sh](scripts/checkIOMMUGroups.sh) script to see what devices are in individual groups.  
 Now we need to start looking for information to edit [vfio.conf](etc/modprobe.d/vfio.conf) to match your system and IOMMU groups.
 ```
-lspci
+lspci -knn
 ```
 You should see an output like below:
 ```
@@ -104,10 +104,10 @@ For example I am passing through my:
 ```
 ...and a few other devices, but this should give you a general idea of how to go about passing through all the devices you have selected.  
 
-Next you need to get the device-id of those devices by using the `lspci -n -s xx:xx.x` command. The `xx:xx.x` is from the device address that gets assigned by the kernel. From the example above the USB Controller is `31:00.0`, so the command would be `lspci -n -s 31:00.0`. Example output of that command looks like...
+Next you need to get the device-id of those devices by using the `lspci -knn` command. The `xx:xx.x` is from the device address that gets assigned by the kernel. Example output of that command looks like...
 
 ```
-31:00.3 0c03: 1022:149c
+31:00.3 0c03: USB controller: Advanced Micro Devices, Inc. [AMD] Matisse USB 3.0 Host Controller [1022:149c]
 ```
 Make note of each device-id that you are wanting to passthrough to the guest OS. Once you have all the device-ids you want to passthrough to the guest OS, you use your favorite editor application, Vim is mine and edit the [vfio.conf](etc/modprobe.d/vfio.conf) located in `/etc/modprobe.d/vfio.conf`.
 
