@@ -1,5 +1,5 @@
 # 🖥 Proxintosh
-MacOS Catalina `10.15.5` on Proxmox VE 6.1 on AMD 3950X system with on-board USB Controllers, Radeon VII, 2x NVMe drives passed through to MacOS.
+MacOS Catalina `10.15.6 beta 2` on Proxmox VE 6.2 on AMD Threadripper 3970X system with on-board USB Controllers, Radeon VII, 2x NVMe drives passed through to MacOS.
 
 ## System Specs
 [**CPU**] AMD Threadripper 3970X 3.7 GHz 32-Core Processor  
