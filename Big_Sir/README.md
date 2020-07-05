@@ -59,7 +59,7 @@ There is known issues with the AsRock B450 Steel Legend and its latest BIOS whic
 ```
 Now is a good time to see what your IOMMU groups looks like.  
 Use the provided [checkIOMMUGroups.sh](scripts/checkIOMMUGroups.sh) script to see what devices are in individual groups.  
-Now we need to start looking for information to edit [vfio.conf](Big_Sur/etc/modprobe.d/vfio.conf) to match your system and IOMMU groups.
+Now we need to start looking for information to edit [vfio.conf](etc/modprobe.d/vfio.conf) to match your system and IOMMU groups.
 ```
 lspci -knn
 ```
@@ -102,9 +102,9 @@ Next you need to get the device-id of those devices by using the `lspci -knn` co
 ```
 31:00.3 0c03: USB controller: Advanced Micro Devices, Inc. [AMD] Matisse USB 3.0 Host Controller [1022:149c]
 ```
-Make note of each device-id that you are wanting to passthrough to the guest OS. Once you have all the device-ids you want to passthrough to the guest OS, you use your favorite editor application, Vim is mine and edit the [vfio.conf](Big_Sur/etc/modprobe.d/vfio.conf) located in `Big_Sur//etc/modprobe.d/vfio.conf`.
+Make note of each device-id that you are wanting to passthrough to the guest OS. Once you have all the device-ids you want to passthrough to the guest OS, you use your favorite editor application, Vim is mine and edit the [vfio.conf](etc/modprobe.d/vfio.conf) located in `Big_Sur/etc/modprobe.d/vfio.conf`.
 
-After you have edited the [vfio.conf](Big_Sur/etc/modprobe.d/vfio.conf) file, you need to do the following commands...
+After you have edited the [vfio.conf](etc/modprobe.d/vfio.conf) file, you need to do the following commands...
 
 ```
 update-initramfs -u -k all
@@ -114,7 +114,7 @@ reboot
 ```
 After the system reboots and you are back into the system, you need to open your web browers and go to the IP address that you setup during the install process of Proxmox VE. Login and on the left handside expand the `pve` tree. 
 
-Locate the 100 VM that is already created for you, by copying the [vm.conf](Big_Sur/etc/pve/qemu-server/100.conf) earlier.
+Locate the 100 VM that is already created for you, by copying the [vm.conf](etc/pve/qemu-server/100.conf) earlier.
 
 Delete the `EFI Disk` and recreate a new one, this is needed because your fresh setup didn't have a local disk made for the EFI disk.
 
