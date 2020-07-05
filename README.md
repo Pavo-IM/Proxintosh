@@ -31,7 +31,7 @@ Results may vary on your system. The results you see in this repo are based of a
 The patches in this repo are only needed if you are trying to passthrough the on-board USB Controller or on-board Realtek audio device.
 
 ## Instructions
-1. Download [Proxmox VE 6.2 ISO](https://www.proxmox.com/en/downloads?task=callelement&format=raw&item_id=513&element=f85c494b-2b32-4109-b8c1-083cca2b7db6&method=download&args[0]=c02822dc797583894f572df4844b92d6) and make a bootable USB drive.
+1. Download [Proxmox VE 6.2 ISO](https://www.proxmox.com/en/downloads/item/proxmox-ve-6-2-iso-installer) and make a bootable USB drive.
 1. Install Proxmox 6.2 on a separate small drive.
 1. Boot the UEFI version of Proxmox VE from the drive you just installed it on. There will be the UEFI version and the normal proxmox version, make sure you set your first bootable drive in your BIOS settings to be the UEFI version of Proxmox.
 1. Once you have booted and see the login screen, login as `root` and use the password you created during install.

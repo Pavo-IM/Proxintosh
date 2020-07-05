@@ -1,0 +1,11 @@
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="Proxmox Virtual Environment"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on video=efifb:off"
+GRUB_CMDLINE_LINUX=""
+
+# Disable os-prober, it might add menu entries for each guest
+GRUB_DISABLE_OS_PROBER=true
+
+# Disable generation of recovery mode menu entries
+GRUB_DISABLE_RECOVERY="true"
